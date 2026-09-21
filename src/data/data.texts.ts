@@ -260,6 +260,6 @@ export const navigation = [
 ];
 
 export const footerTexts = {
-  copyright: "JWAO © 2025 Todos direitos reservados",
+  copyright: "Code.JOTA © 2025 Todos direitos reservados",
   socialLinks,
 };

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const seoConfig: Metadata = {
-  title: "Jwao | Desenvolvedor Web Freelancer",
+  title: "Code.JOTA | Desenvolvedor Web Freelancer",
   description:
-    "Portfólio de Jwao, desenvolvedor web freelancer especializado em websites comerciais, landing pages e portfólios profissionais com Next.js e TailwindCSS.",
+    "Portfólio de Code.JOTA, desenvolvedor web freelancer especializado em websites comerciais, landing pages e portfólios profissionais com Next.js e TailwindCSS.",
   keywords: [
     "Desenvolvedor Web Freelancer",
     "Criação de Websites Comerciais",
@@ -11,26 +11,26 @@ export const seoConfig: Metadata = {
     "Portfólios Profissionais",
     "Sites Institucionais",
     "Next.js",
-    "ReactJs", 
+    "ReactJs",
     "React",
     "Desenvolvimento web front end",
     "TailwindCSS",
     "Desenvolvedor Front-End",
     "Freelancer Curitiba",
-    "Jwao",
+    "Code.JOTA",
   ],
   openGraph: {
-    title: "Jwao | Desenvolvedor Web Freelancer",
+    title: "Code.JOTA | Desenvolvedor Web Freelancer",
     description:
       "Criação de websites, landing pages e portfólios profissionais com Next.js e TailwindCSS.",
-    url: "https://jwaodev.com.br",
-    siteName: "Portfólio Jwao",
+    url: "https://codejota.com.br",
+    siteName: "Portfólio Code.JOTA",
     images: [
       {
-        url: "https://jwaodev.com.br/preview.png",
+        url: "https://codejota.com.br/preview.png",
         width: 1200,
         height: 630,
-        alt: "Portfólio de Jwao - Desenvolvedor Web Freelancer",
+        alt: "Portfólio de Code.JOTA - Desenvolvedor Web Freelancer",
       },
     ],
     locale: "pt_BR",
@@ -38,9 +38,9 @@ export const seoConfig: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jwao | Desenvolvedor Web Freelancer",
+    title: "Code.JOTA | Desenvolvedor Web Freelancer",
     description:
       "Websites, landing pages e portfólios profissionais com Next.js e TailwindCSS.",
-    images: ["https://jwaodev.com.br/preview.png"],
+    images: ["https://codejota.com.br/preview.png"],
   },
 };
