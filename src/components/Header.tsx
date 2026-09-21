@@ -3,110 +3,145 @@
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { navigation } from "@/data/data.texts";
+import { navigation, socialLinks } from "@/data/data.texts";
+import type { NavigationItem, SocialLink } from "@/types/type";
 import HeaderAnimation from "./Animation/HeaderAnimation";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const handleSmoothScroll = (
-    event: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
-  ) => {
-    event.preventDefault();
-    document
-      .getElementById(href.slice(1))
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+    
+    // Fechar menu mobile se estiver aberto
     setMobileMenuOpen(false);
   };
 
   return (
-    <header className="relative z-50 border-b border-brand-light/15 bg-brand-dark">
+    <header className="relative inset-x-0 top-0 z-50 text-stone-500">
+      {/* Desktop menu */}
       <HeaderAnimation>
         <nav
-          aria-label="Navegação principal"
-          className="site-container flex min-h-20 items-center justify-between gap-6"
+          aria-label="Global"
+          className="flex items-center justify-between md:p-10 p-6 border-b"
         >
-          <a
-            href="#hero"
-            onClick={(event) => handleSmoothScroll(event, "#hero")}
-            className="flex items-center gap-2 text-lg font-semibold tracking-[-0.04em] text-brand-light"
+        <div className="flex lg:flex-1">
+          <a 
+            href="#hero" 
+            onClick={(e) => handleSmoothScroll(e, '#hero')}
+            className="-m-1.5 p-1.5 cursor-pointer"
           >
-            <span aria-hidden="true" className="text-brand-teal">
-              &lt;/&gt;
-            </span>
-            code.JOTA
+            <span className="">DEV Front-End</span>
           </a>
-          <div className="hidden items-center gap-7 lg:flex">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(event) => handleSmoothScroll(event, item.href)}
-                className="ui-label text-brand-light/75 transition hover:text-brand-teal"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-          <a
-            href="#contact"
-            onClick={(event) => handleSmoothScroll(event, "#contact")}
-            className="hidden rounded-full border border-brand-light/30 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.12em] text-brand-light transition hover:border-brand-teal hover:text-brand-teal lg:inline-flex"
-          >
-            Vamos conversar
-          </a>
+        </div>
+        <div className="flex lg:hidden">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
-            className="inline-flex rounded-full border border-brand-light/25 p-2 text-brand-light lg:hidden"
-            aria-label="Abrir menu"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
           >
-            <Bars3Icon className="size-6" />
+            <span className="sr-only">Open main menu</span>
+            <Bars3Icon aria-hidden="true" className="size-6" />
           </button>
-        </nav>
+        </div>
+        <div className="hidden lg:flex lg:gap-x-12">
+          {navigation.map((item: NavigationItem) => (
+            <a
+              key={item.name}
+              href={item.href}
+              onClick={(e) => handleSmoothScroll(e, item.href)}
+              className="text-sm/6 font-semibold hover:textcolor-primary transition-colors cursor-pointer"
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          {socialLinks.map((social: SocialLink, idx: number) => {
+            const Icon = social.icon;
+            return (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center${
+                  idx !== 0 ? " ml-4" : ""
+                }`}
+              >
+                <Icon className="h-6 w-6" />
+                <span className="ml-2">{social.name}</span>
+              </a>
+            );
+          })}
+        </div>
+      </nav>
       </HeaderAnimation>
+
+      {/* Mobile menu */}
       <Dialog
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
         className="lg:hidden"
       >
-        <div
-          className="fixed inset-0 z-50 bg-brand-dark/70"
-          aria-hidden="true"
-        />
-        <DialogPanel className="fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col bg-brand-yellow p-6 text-brand-dark">
+        <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto p-3 sm:max-w-sm sm:ring-1 sm:ring-gray-100/10 bg-stone-900">
           <div className="flex items-center justify-between">
-            <span className="text-lg font-semibold tracking-[-0.04em]">
-              <span className="text-brand-red">&lt;/&gt;</span> code.JOTA
-            </span>
+            <a href="#" className="-m-1 p-1">
+              <span className="sr-only">Your Company</span>
+            </a>
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
-              className="rounded-full border border-brand-dark/30 p-2"
-              aria-label="Fechar menu"
+              className="-m-2 rounded-md p-2"
             >
-              <XMarkIcon className="size-6" />
+              <span className="sr-only">Close menu</span>
+              <XMarkIcon aria-hidden="true" className="size-6" />
             </button>
           </div>
-          <div className="mt-16 flex flex-col gap-6">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                onClick={(event) => handleSmoothScroll(event, item.href)}
-                className="border-b border-brand-dark/20 pb-4 text-3xl font-extrabold uppercase tracking-[-0.05em]"
-              >
-                {item.name}
-              </a>
-            ))}
+          <div className="mt-6 flow-root">
+            <div className="-my-6 divide-y divide-white/10">
+              <div className="space-y-2 py-6 ">
+                {navigation.map((item: NavigationItem) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => handleSmoothScroll(e, item.href)}
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-white/5 cursor-pointer"
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+              <div className="py-6 flex flex-col gap-4">
+                {socialLinks.map((social: SocialLink, idx: number) => {
+                  const Icon = social.icon;
+                  return (
+                    <a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center${
+                        idx !== 0 ? " mt-2" : ""
+                      }`}
+                    >
+                      <Icon className="h-6 w-6" />
+                      <span className="ml-2">{social.name}</span>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
           </div>
-          <a
-            href="#contact"
-            onClick={(event) => handleSmoothScroll(event, "#contact")}
-            className="mt-auto text-sm font-bold uppercase tracking-[0.12em]"
-          >
-            Me conte sua ideia →
-          </a>
         </DialogPanel>
       </Dialog>
     </header>

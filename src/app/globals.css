@@ -1,86 +1,142 @@
 @import "tailwindcss";
 
-@theme {
-  --color-brand-dark: #10101c;
-  --color-brand-light: #efebe4;
-  --color-brand-yellow: #e29d20;
-  --color-brand-orange: #d46a00;
-  --color-brand-red: #dc4b0a;
-  --color-brand-teal: #42b6a7;
-  --color-brand-gray: #cdcdcd;
-  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
-  --radius-card: 1.5rem;
-  --radius-panel: 2rem;
-}
-
-:root {
-  color-scheme: dark;
-}
+/* Scroll suave global */
 html {
   scroll-behavior: smooth;
-  background: var(--color-brand-dark);
 }
-body {
-  min-width: 320px;
-  background: var(--color-brand-dark);
-  color: var(--color-brand-light);
-  font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
-}
+
+/* Offset para compensar header fixo */
 section[id] {
-  scroll-margin-top: 6rem;
+  scroll-margin-top: 80px;
 }
-::selection {
-  background: var(--color-brand-yellow);
-  color: var(--color-brand-dark);
-}
-:focus-visible {
-  outline: 3px solid var(--color-brand-teal);
-  outline-offset: 4px;
+
+@theme {
+  --color-primary-100: #b55327;
+  --color-primary-200: #8c2a2a;
+
+  --color-secondary-100: #b4b832;
+  --color-secondary-200: #b4b802;
+
+  --color-accent-100: #1c7b7a;
+  --color-accent-200: #17c8e0;
+
+  --color-dark-100: #4b4b4b;
+  --color-dark-200: #333333;
+  --color-dark-300: #000000;
+  --color-main-gray-300: #797979;
+
+  --color-light-100: #ffffff;
+  --color-light-200: #f2f2f2;
+  --color-light-300: #e0e0e0;
+
+  --font-family-primary: "Montserrat", sans-serif;
+  --font-family-secondary: "Open Sans", sans-serif;
 }
 
 @layer components {
-  .site-container {
-    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12;
-  }
-  .section-space {
-    @apply py-20 sm:py-28 lg:py-36;
-  }
-  .eyebrow {
-    @apply flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-brand-teal;
-  }
-  .eyebrow::before {
-    content: "";
-    @apply h-px w-8 bg-current;
-  }
-  .display-title {
-    @apply font-black uppercase leading-[0.87] tracking-[-0.07em] text-brand-light;
-    font-size: clamp(3.35rem, 9vw, 9.5rem);
-  }
-  .section-title {
-    @apply font-extrabold uppercase leading-[0.92] tracking-[-0.055em] text-brand-light;
-    font-size: clamp(2.7rem, 5vw, 5.75rem);
-  }
-  .ui-label {
-    @apply text-xs font-semibold uppercase tracking-[0.15em];
-  }
-  .brand-button {
-    @apply inline-flex items-center justify-center gap-3 rounded-full bg-brand-dark px-6 py-4 text-sm font-bold uppercase tracking-[0.06em] text-brand-light transition duration-300 hover:-translate-y-1 hover:bg-brand-teal hover:text-brand-dark sm:px-8;
-  }
-  .brand-button-light {
-    @apply inline-flex items-center justify-center gap-3 rounded-full border border-brand-light/35 px-6 py-4 text-sm font-bold uppercase tracking-[0.06em] text-brand-light transition duration-300 hover:border-brand-teal hover:text-brand-teal sm:px-8;
-  }
-  .interface-line {
-    @apply h-px w-full bg-brand-light/20;
-  }
-}
+  /*Reset base*/
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  h1 {
+    @apply text-5xl font-bold text-neutral-200;
+  }
+
+  h2 {
+    @apply text-3xl font-bold text-[var(--color-primary-100)] border-l-2 border-amber-500 pl-3 mb-10;
+    font-family: "Rufina", serif;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold text-neutral-300 border-b-2 border-stone-800 pb-3;
+    font-family: "Courier New", Courier, monospace;
+  }
+
+  h4 {
+    @apply text-xl font-bold;
+  }
+
+  p {
+    @apply text-base;
+  }
+
+  a {
+    @apply text-stone-300 cursor-pointer hover:text-[var(--color-primary-100)];
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  /*Utilitarios*/
+
+  .textcolor-primary {
+    color: var(--color-primary-100);
+  }
+
+  .textcolor-secondary {
+    @apply text-gray-500;
+  }
+
+  .bg-primary {
+    @apply bg-stone-800;
+  }
+
+  .bg-secondary {
+    @apply bg-stone-700;
+  }
+
+  .border-primary {
+    @apply border-amber-300;
+  }
+
+  .border-secondary {
+    @apply border-gray-500;
+  }
+
+  /* --- COMPONENTES --- */
+
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium;
+  }
+
+  .btn-primary {
+    @apply text-white bg-amber-300 hover:bg-amber-400 focus:ring-2 focus:ring-offset-2 focus:ring-amber-500;
+  }
+
+  .btn-secondary {
+    @apply text-white bg-gray-500 hover:bg-gray-600 focus:ring-2 focus:ring-offset-2 focus:ring-gray-500;
+  }
+
+  .btn-outline {
+    @apply bg-transparent border-2;
+  }
+
+  .btn-outline-primary {
+    @apply border-amber-300 hover:bg-amber-300 hover:text-white focus:ring-2 focus:ring-offset-2 focus:ring-amber-500;
+  }
+
+  .btn-outline-secondary {
+    @apply text-gray-500 border-gray-500 hover:bg-gray-500 hover:text-white focus:ring-2 focus:ring-offset-2 focus:ring-gray-500;
+  }
+
+  .separator {
+    @apply border-t border-gray-300 my-4;
+  }
+
+  /* Fontes Customizadas */
+  
+  .font-mono {
+    font-family: "Courier New", Courier, monospace;
+  }
+
+  .rufina-regular {
+    font-family: "Rufina", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .rufina-bold {
+    font-family: "Rufina", serif;
+    font-weight: 700;
+    font-style: normal;
   }
 }

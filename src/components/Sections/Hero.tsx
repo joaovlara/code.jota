@@ -1,52 +1,27 @@
 "use client";
 
 import HeroAnimation from "../Animation/HeroAnimation";
-import { heroSection } from "@/data/data.texts";
 
 export default function Hero() {
-  const [firstTitleLine, secondTitleLine, accentTitleLine] = heroSection.title;
-
   return (
-    <section id="hero" className="relative overflow-hidden bg-brand-dark">
-      <div
-        aria-hidden="true"
-        className="absolute right-[-0.05em] top-12 select-none text-[clamp(12rem,30vw,32rem)] font-black leading-none tracking-[-0.15em] text-brand-light/[0.035]"
-      >
-        &lt;/&gt;
-      </div>
-      <HeroAnimation className="site-container section-space relative grid min-h-[calc(100svh-5rem)] content-center gap-12">
-        <div className="flex items-center justify-between border-b border-brand-light/20 pb-4">
-          <p className="eyebrow">{heroSection.eyebrow}</p>
-          <p className="ui-label text-brand-gray">{heroSection.location}</p>
-        </div>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end">
-          <div>
-            <h1 className="display-title">
-              {firstTitleLine}
-              <br />
-              {secondTitleLine}
-              <br />
-              <span className="text-brand-yellow">{accentTitleLine}</span>
-            </h1>
-            <p className="mt-8 max-w-xl text-base leading-relaxed text-brand-gray sm:text-lg">
-              {heroSection.description}
-            </p>
-          </div>
-          <div className="rounded-panel border border-brand-light/20 p-5 lg:mb-2">
-            <p className="ui-label text-brand-teal">{heroSection.panelTitle}</p>
-            <p className="mt-8 text-sm leading-relaxed text-brand-gray">
-              {heroSection.panelDescription}
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-col gap-6 border-t border-brand-light/20 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <a href="#contact" className="brand-button w-fit">
-            {heroSection.buttonText} <span aria-hidden="true">→</span>
-          </a>
-          <p className="ui-label text-brand-light/50">
-            {heroSection.scrollLabel} <span className="ml-2 text-brand-teal">↓</span>
-          </p>
-        </div>
+    <section
+      id="hero"
+      className="min-h-screen flex flex-col items-center justify-center"
+    >
+      <HeroAnimation className="container p-5 space-y-3 relative">
+        <h3 className="md:text-3xl font-mono textcolor-primary border-none">
+          &lt; &gt;
+        </h3>
+        <h1 className="pl-3 text-5xl md:text-8xl font-bold rufina-regular">
+          Eu sou João, <br /> Desenvolvedor <br />
+          Web & Front-End <br />
+        </h1>
+        <h3 className=" pl-3 md:text-lg pt-10 font-mono border-none text-neutral-400">
+          Design, Intefaces e aplicações para Web e Mobile
+        </h3>
+        <h3 className="md:text-3xl font-mono textcolor-primary border-none">
+          &lt;/&gt;
+        </h3>
       </HeroAnimation>
     </section>
   );

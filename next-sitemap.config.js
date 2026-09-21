@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://codejota.com.br",
+  siteUrl: "https://jwaodev.com.br",
   generateRobotsTxt: true,
   sitemapSize: 7000,
 };
