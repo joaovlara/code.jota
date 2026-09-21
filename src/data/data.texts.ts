@@ -1,17 +1,54 @@
 // Centraliza todos os textos das sessões e componentes do projeto
 
-import { FaReact, FaNodeJs, FaJs, FaHtml5, FaCss3Alt, FaLinkedin, FaGithub, FaInstagram, FaWhatsapp , FaAws} from "react-icons/fa";
-import { SiTailwindcss, SiNextdotjs, SiAdobecreativecloud } from "react-icons/si";
+import {
+  FaReact,
+  FaNodeJs,
+  FaJs,
+  FaHtml5,
+  FaCss3Alt,
+  FaLinkedin,
+  FaGithub,
+  FaInstagram,
+  FaWhatsapp,
+  FaAws,
+  FaPenNib,
+} from "react-icons/fa";
+import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
+
+export const heroSection = {
+  eyebrow: "Web dev · Web design",
+  location: "Curitiba, BR",
+  title: ["Sites modernos", "para marcas", "modernas."],
+  description:
+    "Desenvolvo websites que unem design, tecnologia e estratégia para transformar sua presença digital.",
+  panelTitle: "Presença digital",
+  panelDescription:
+    "Alta performance, interfaces com personalidade e resultados que dão para medir.",
+  buttonText: "Me conte sua ideia",
+  scrollLabel: "Scroll para explorar",
+};
 
 export const socialLinks = [
-  { name: "Github", icon: FaGithub, url: "https://github.com/joaovlara"},
-  { name: "WhatsApp", icon: FaWhatsapp, url:"https://wa.me/5541998205576"},
-  { name: "Linkedin", icon: FaLinkedin, url: "https://www.linkedin.com/in/joaovlara/"},
-  // { name: "Instagram", icon: FaInstagram, url: "https://instagram.com" },
+  { name: "Github", icon: FaGithub, url: "https://github.com/joaovlara" },
+  { name: "WhatsApp", icon: FaWhatsapp, url: "https://wa.me/5541998205576" },
+  {
+    name: "Linkedin",
+    icon: FaLinkedin,
+    url: "https://www.linkedin.com/in/joaovlara/",
+  },
+  { name: "Instagram", icon: FaInstagram, url: "https://www.instagram.com/code.jota" },
 ];
 
 export const aboutSection = {
   title: "SOBRE",
+  eyebrow: "Sobre code.JOTA",
+  intro:
+    "Estratégia, design e desenvolvimento para transformar boas ideias em presença digital.",
+  heading: ["Não é só", "um site.", "É presença."],
+  imageCaption: ["Design com intenção", "Tecnologia com clareza"],
+  techTitle: "Ferramentas que movem o projeto",
+  closingDescription:
+    "Uma combinação flexível de repertório visual, código e ferramentas para entregar experiências sólidas.",
   description:
     "Eu sou o João. Crio e desenvolvo aplicações e materiais para a internet, com especialização em Desenvolvimento Front-End, criando interfaces para Web e Mobile com foco em performance, responsividade e experiência do usuário. Colaborei com startups, empresas e instituições, além de prestar serviços para clientes individuais, atuando em todo o ciclo de criação e publicação de projetos. Trabalho com tecnologias modernas de desenvolvimento, programando plataformas web, landing pages, portfólios e sites comerciais. Gosto de unir criatividade e presença online para alcançar prospecções, campanhas ou solucionar problemas de forma eficaz e otimizada.",
   image: {
@@ -26,7 +63,7 @@ export const aboutSection = {
     { icon: FaHtml5, name: "HTML5" },
     { icon: FaCss3Alt, name: "CSS3" },
     { icon: FaAws, name: "AWS" },
-    { icon: SiAdobecreativecloud, name: "Adobe Creative Cloud" },
+    { icon: FaPenNib, name: "Adobe Creative Cloud" },
   ],
   button: {
     text: "DOWNLOAD CV",
@@ -36,8 +73,34 @@ export const aboutSection = {
 
 export const expertiseTexts = {
   title: "EXPERIÊNCIAS",
+  eyebrow: "Expertise",
+  heading: ["Do conceito", "ao", "lançamento."],
   subtitle:
     "Visual Design, Branding Identity, UI Design, Product Design, Prototyping, Illustration",
+  description:
+    "Design, desenvolvimento e estratégia organizados em uma experiência digital que representa sua marca.",
+  capabilities: [
+    {
+      title: "Web design",
+      description: "Interfaces memoráveis, claras e centradas na sua marca.",
+    },
+    {
+      title: "Desenvolvimento",
+      description:
+        "Tecnologia atual, responsividade e performance em cada detalhe.",
+    },
+    {
+      title: "Landing pages",
+      description: "Páginas pensadas para comunicar, captar e converter.",
+    },
+    {
+      title: "Sites institucionais",
+      description: "Presença digital sólida para negócios que querem crescer.",
+    },
+  ],
+  technicalBase: "Base técnica",
+  technicalDescription:
+    "Experiência prática em times, produtos e projetos digitais de diferentes escalas.",
   experience: {
     title: "EXPERIÊNCIA",
     items: [
@@ -122,13 +185,18 @@ export const expertiseTexts = {
 
 export const workSection = {
   title: "PORTFÓLIO",
+  eyebrow: "Projetos selecionados",
+  heading: ["Trabalho que", "aparece."],
   subtitle: "Conheça alguns dos meus trabalhos recentes",
+  description:
+    "Cada entrega combina uma identidade visual própria com uma experiência objetiva e responsiva.",
   buttonText: "Ver Projeto",
   projects: [
     {
       id: 1,
       title: "Landing Pages",
       category: "Landing Pages",
+      alt: "Projeto de landing pages",
       image: "/images/landing-pages.png",
       link: "https://www.onfocus.com.br/",
     },
@@ -136,6 +204,7 @@ export const workSection = {
       id: 2,
       title: "Desenvolvimento Mobile",
       category: "Mobile",
+      alt: "Projeto de desenvolvimento mobile",
       image: "/images/mobile.png",
       link: "https://pokedex-plum-rho.vercel.app/",
     },
@@ -143,6 +212,7 @@ export const workSection = {
       id: 3,
       title: "Website Comercial",
       category: "Desenvolvimento Web",
+      alt: "Projeto de website comercial",
       image: "/images/website-comercial.png",
       link: "https://grupodigital.com.br/",
     },
@@ -150,6 +220,7 @@ export const workSection = {
       id: 4,
       title: "Website Institucional",
       category: "Social Media",
+      alt: "Projeto de website institucional",
       image: "/images/site-institucional.png",
       link: "https://advocaciamarialara.com.br/",
     },
@@ -158,12 +229,17 @@ export const workSection = {
 
 export const CtaSection = {
   title: "Entre em Contato",
+  eyebrow: "Vamos criar juntos",
+  heading: ["Sua marca", "merece um site", "à altura."],
   description:
-    "Vamos desenvolver sua presença online, com criatividade, segurança e bom desempenho na web",
+    "Vamos desenvolver uma presença online clara, memorável e preparada para gerar resultado.",
+  footerDescription:
+    "Design, desenvolvimento, tecnologia e estratégia em uma única experiência.",
   contact: {
     title: "Envie sua ideia, faça um orçamento",
     email: "joaovdelara@gmail.com",
     phone: "41998205576",
+    phoneDisplay: "+55 41 99820-5576",
   },
   social: {
     title: "Social",

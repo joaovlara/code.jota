@@ -1,103 +1,63 @@
-import React from "react";
 import { expertiseTexts } from "@/data/data.texts";
-import type {
-  ExperienceItem,
-  EducationItem,
-  SkillCategory,
-} from "@/types/type";
 import FadeUpAnimation from "@/components/Animation/FadeUpAnimation";
-import SequentialFadeUp from "@/components/Animation/SequentialFadeUp";
 
 export default function Expertise() {
-  const { title, subtitle, experience, education, skills } = expertiseTexts;
+  const [firstHeadingLine, secondHeadingLine, accentHeadingLine] = expertiseTexts.heading;
 
   return (
-    <section id="expertise" className="flex flex-col items-center justify-center">
-      <div className="container relative p-5 space-y-3">
-        {/* Expertise Header */}
+    <section id="expertise" className="section-space bg-brand-dark">
+      <div className="site-container">
         <FadeUpAnimation>
-          <div className="">
-            <h2 className="">{title}</h2>
-            <h3 className="mb-10">{subtitle}</h3>
+          <div className="flex flex-col justify-between gap-8 border-b border-brand-light/20 pb-10 lg:flex-row lg:items-end">
+            <div>
+              <p className="eyebrow">{expertiseTexts.eyebrow}</p>
+              <h2 className="section-title mt-7">
+                {firstHeadingLine}
+                <br />
+                {secondHeadingLine} <span className="text-brand-teal">{accentHeadingLine}</span>
+              </h2>
+            </div>
+            <p className="max-w-sm text-base leading-relaxed text-brand-gray">
+              {expertiseTexts.description}
+            </p>
           </div>
         </FadeUpAnimation>
-
-        <SequentialFadeUp className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-16">
-          {/* Experience Column */}
-          <div className="col-span-1">
-            <p className="uppercase tracking-wider textcolor-primary-500 mb-10 font-semibold">
-              {experience.title}
+        <div className="mt-12 grid gap-3 lg:grid-cols-4">
+          {expertiseTexts.capabilities.map((capability, index) => (
+            <FadeUpAnimation
+              key={capability.title}
+              delay={index * 0.08}
+              className="rounded-card border border-brand-light/20 p-6 transition hover:-translate-y-1 hover:border-brand-teal"
+            >
+              <h3 className="mt-10 text-2xl font-extrabold uppercase leading-none tracking-[-0.05em]">
+                {capability.title}
+              </h3>
+              <p className="mt-5 text-sm leading-relaxed text-brand-gray">
+                {capability.description}
+              </p>
+            </FadeUpAnimation>
+          ))}
+        </div>
+        <div className="mt-16 grid gap-10 border-t border-brand-light/20 pt-10 lg:grid-cols-[1fr_2fr]">
+          <div>
+            <p className="ui-label text-brand-yellow">{expertiseTexts.technicalBase}</p>
+            <p className="mt-4 text-sm leading-relaxed text-brand-gray">
+              {expertiseTexts.technicalDescription}
             </p>
-
-            {experience.items.map((item: ExperienceItem, index: number) => (
-              <div key={index} className="mb-12">
-                <div className="flex items-start mb-3">
-                  <span className="mr-3">•</span>
-                  <div>
-                    <h4 className="mb-1">{item.position}</h4>
-                    <p className="text-neutral-300">{item.company}</p>
-                    <p className="tracking-wider mt-1 text-neutral-500">
-                      {item.period}
-                    </p>
-                  </div>
-                </div>
-                <p className="leading-relaxed ml-6 mt-4">
-                  {item.description}
-                </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-2">
+            {expertiseTexts.experience.items.map((item) => (
+              <div
+                key={item.company}
+                className="border-l border-brand-teal pl-5"
+              >
+                <p className="ui-label text-brand-gray">{item.period}</p>
+                <h3 className="mt-3 text-xl font-bold">{item.position}</h3>
+                <p className="mt-1 text-sm text-brand-teal">{item.company}</p>
               </div>
             ))}
           </div>
-
-          {/* Education Column */}
-          <div className="col-span-1">
-            <p className="uppercase tracking-wider textcolor-primary-500 mb-10 font-semibold">
-              {education.title}
-            </p>
-
-            {education.items.map((item: EducationItem, index: number) => (
-              <div key={index} className="mb-12">
-                <div className="flex items-start mb-3">
-                  <span className="textcolor-primary-500 mr-3">•</span>
-                  <div>
-                    <h4 className="mb-1 text-neutral-300">
-                      {item.institution}
-                    </h4>
-                    <p className="">{item.degree}</p>
-                    <p className="uppercase tracking-wider mt-1 text-neutral-500">
-                      {item.period}
-                    </p>
-                  </div>
-                </div>
-                <p className="leading-relaxed ml-6 mt-4">
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Skills Column (Third column) */}
-          <div className="col-span-1">
-            <p className="uppercase tracking-wider textcolor-primary-500 mb-10 font-semibold">
-              {skills.title}
-            </p>
-
-            {skills.categories.map((category: SkillCategory, index: number) => (
-              <div key={index} className="mb-8">
-                <h4 className="text-xl mb-4">{category.title}</h4>
-                <div className="flex flex-wrap gap-3">
-                  {category.skills.map((skill: string, skillIndex: number) => (
-                    <span
-                      key={skillIndex}
-                      className="bg-zinc-800 px-3 py-1 rounded"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </SequentialFadeUp>
+        </div>
       </div>
     </section>
   );

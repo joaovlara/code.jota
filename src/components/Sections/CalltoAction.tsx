@@ -1,67 +1,73 @@
-"use client";
-
-import Link from "next/link";
 import { CtaSection } from "@/data/data.texts";
-import SequentialFadeUp from "@/components/Animation/SequentialFadeUp";
+import FadeUpAnimation from "@/components/Animation/FadeUpAnimation";
 
-export default function Contact() {
-  const { title, description, contact, social, button } = CtaSection;
-
+export default function CalltoAction() {
+  const { contact, social, button } = CtaSection;
+  const [firstHeadingLine, secondHeadingLine, accentHeadingLine] = CtaSection.heading;
   return (
-    <section
-      id="contact"
-      className="min-h-[70vh] flex flex-col items-center justify-center bg-linear-to-t from-stone-950"
-    >
-      <div className="container relative p-5 space-y-3">
-        <SequentialFadeUp staggerDelay={0.4} duration={0.6}>
-          <h2 className="textcolor-primary mb-10 uppercase">{title}</h2>
-
-          <h3 className="leading-tight mb-16 text-neutral-200 text-4xl">
-            {description}
-          </h3>
-
-          <SequentialFadeUp
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16"
-            staggerDelay={0.3}
-            duration={0.5}
-          >
-            {/* Coluna 1 - Contato */}
+    <section id="contact" className="bg-brand-dark px-0 pb-20 sm:px-8">
+      <div className="site-container rounded-none bg-brand-yellow py-16 text-brand-dark sm:rounded-panel sm:px-12 sm:py-20 lg:px-20">
+        <FadeUpAnimation>
+          <p className="eyebrow text-black">{CtaSection.eyebrow}</p>
+          <div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1fr)_20rem] lg:items-end">
             <div>
-              <h4 className="uppercase tracking-wider mb-4">{contact.title}</h4>
-              <div className="space-y-2">
-                <p>{contact.email}</p>
-                <p>{contact.phone}</p>
-              </div>
+              <h2 className="text-5xl font-black uppercase leading-[0.86] tracking-[-0.07em] sm:text-7xl lg:text-8xl">
+                {firstHeadingLine}
+                <br />
+                {secondHeadingLine}
+                <br />
+                <span className="text-brand-light">{accentHeadingLine}</span>
+              </h2>
+              <p className="mt-7 max-w-xl text-base leading-relaxed text-brand-dark/75 sm:text-lg">
+                {CtaSection.description}
+              </p>
             </div>
-
+            <a
+              href={button.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="brand-button w-fit"
+            >
+              {button.text} <span aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div className="mt-16 grid gap-6 border-t border-brand-dark/25 pt-6 text-sm sm:grid-cols-3">
             <div>
-              <h4 className="uppercase tracking-wider mb-4">{social.title}</h4>
-              <div className="flex flex-wrap gap-6 mt-4 md:mt-0">
-                {CtaSection.social.socialLinks.map((social) => (
+              <p className="ui-label text-brand-dark/55">{contact.title}</p>
+              <a
+                className="mt-2 block font-semibold hover:text-brand-red"
+                href={`mailto:${contact.email}`}
+              >
+                {contact.email}
+              </a>
+              <a
+                className="mt-1 block font-semibold hover:text-brand-red"
+                href={`https://wa.me/55${contact.phone}`}
+              >
+                {contact.phoneDisplay}
+              </a>
+            </div>
+            <div>
+              <p className="ui-label text-brand-dark/55">{social.title}</p>
+              <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
+                {social.socialLinks.map((item) => (
                   <a
-                    key={social.name}
-                    href={social.url}
+                    key={item.name}
+                    href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={social.name}
+                    className="font-semibold hover:text-brand-red"
                   >
-                    {social.name}
+                    {item.name}
                   </a>
                 ))}
               </div>
             </div>
-
-            {/* Coluna 3 - Botão */}
-            <div>
-              <Link href={button.link}>
-                <div className="bg-zinc-800 hover:bg-zinc-700 textcolor-primary-500 uppercase tracking-widest py-4 px-8 text-center transition-colors">
-                  {button.text}
-                </div>
-              </Link>
-            </div>
-
-          </SequentialFadeUp>
-        </SequentialFadeUp>
+            <p className="self-end text-sm leading-relaxed text-brand-dark/65">
+              {CtaSection.footerDescription}
+            </p>
+          </div>
+        </FadeUpAnimation>
       </div>
     </section>
   );

@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className="bg-stone-950 text-stone-300 overflow-x-hidden h-auto max-w-screen">
+      <body suppressHydrationWarning className="overflow-x-hidden antialiased">
         <Header />
         {children}
         <Footer />
