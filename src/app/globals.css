@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-dark: #10101c;
+  --color-brand-light: #efebe4;
+  --color-brand-yellow: #e29d20;
+  --color-brand-orange: #d46a00;
+  --color-brand-red: #dc4b0a;
+  --color-brand-teal: #42b6a7;
+  --color-brand-gray: #cdcdcd;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 1.5rem;
+  --radius-panel: 2rem;
+}
+
+:root {
+  color-scheme: dark;
+}
+html {
+  scroll-behavior: smooth;
+  background: var(--color-brand-dark);
+}
+body {
+  min-width: 320px;
+  background: var(--color-brand-dark);
+  color: var(--color-brand-light);
+  font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+section[id] {
+  scroll-margin-top: 6rem;
+}
+::selection {
+  background: var(--color-brand-yellow);
+  color: var(--color-brand-dark);
+}
+:focus-visible {
+  outline: 3px solid var(--color-brand-teal);
+  outline-offset: 4px;
+}
+
+@layer components {
+  .site-container {
+    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12;
+  }
+  .section-space {
+    @apply py-20 sm:py-28 lg:py-36;
+  }
+  .eyebrow {
+    @apply flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.18em] text-brand-teal;
+  }
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-8 bg-current;
+  }
+  .display-title {
+    @apply font-black uppercase leading-[0.87] tracking-[-0.07em] text-brand-light;
+    font-size: clamp(3.35rem, 9vw, 9.5rem);
+  }
+  .section-title {
+    @apply font-extrabold uppercase leading-[0.92] tracking-[-0.055em] text-brand-light;
+    font-size: clamp(2.7rem, 5vw, 5.75rem);
+  }
+  .ui-label {
+    @apply text-xs font-semibold uppercase tracking-[0.15em];
+  }
+  .brand-button {
+    @apply inline-flex items-center justify-center gap-3 rounded-full bg-brand-dark px-6 py-4 text-sm font-bold uppercase tracking-[0.06em] text-brand-light transition duration-300 hover:-translate-y-1 hover:bg-brand-teal hover:text-brand-dark sm:px-8;
+  }
+  .brand-button-light {
+    @apply inline-flex items-center justify-center gap-3 rounded-full border border-brand-light/35 px-6 py-4 text-sm font-bold uppercase tracking-[0.06em] text-brand-light transition duration-300 hover:border-brand-teal hover:text-brand-teal sm:px-8;
+  }
+  .interface-line {
+    @apply h-px w-full bg-brand-light/20;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
