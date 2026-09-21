@@ -29,7 +29,7 @@ export default function Footer() {
           </nav>
         </div>
         <div className="flex flex-col gap-5 pt-6 text-xs text-brand-gray sm:flex-row sm:items-center sm:justify-between">
-          <p>{footerTexts.copyright.replace("JWAO", "code.JOTA")}</p>
+          <p>{footerTexts.copyright}</p>
           <div className="flex gap-5">
             {footerTexts.socialLinks.map((social) => (
               <a
