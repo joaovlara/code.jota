@@ -6,7 +6,7 @@ export default function Works() {
   const { projects } = workSection;
   const [firstHeadingLine, accentHeadingLine] = workSection.heading;
   return (
-    <section id="portfolio" className="section-space bg-brand-dark">
+    <section id="portfolio" className="site-containerbg-brand-dark">
       <div className="site-container">
         <div className="flex flex-col justify-between gap-8 border-b border-brand-light/20 pb-10 md:flex-row md:items-end">
           <div>

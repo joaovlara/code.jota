@@ -14,7 +14,7 @@ export default function Hero() {
       >
         &lt;/&gt;
       </div>
-      <HeroAnimation className="site-container section-space relative grid min-h-[calc(100svh-5rem)] content-center gap-12">
+      <HeroAnimation className="site-container section-space relative grid content-center gap-12">
         <div className="flex items-center justify-between border-b border-brand-light/20 pb-4">
           <p className="eyebrow">{heroSection.eyebrow}</p>
           <p className="ui-label text-brand-gray">{heroSection.location}</p>
@@ -30,12 +30,6 @@ export default function Hero() {
             </h1>
             <p className="mt-8 max-w-xl text-base leading-relaxed text-brand-gray sm:text-lg">
               {heroSection.description}
-            </p>
-          </div>
-          <div className="rounded-panel border border-brand-light/20 p-5 lg:mb-2">
-            <p className="ui-label text-brand-teal">{heroSection.panelTitle}</p>
-            <p className="mt-8 text-sm leading-relaxed text-brand-gray">
-              {heroSection.panelDescription}
             </p>
           </div>
         </div>

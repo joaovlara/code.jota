@@ -3,40 +3,69 @@ import { aboutSection } from "@/data/data.texts";
 import FadeUpAnimation from "../Animation/FadeUpAnimation";
 
 export default function About() {
-  const [firstHeadingLine, secondHeadingLine, thirdHeadingLine] = aboutSection.heading;
-
   return (
     <section
       id="about"
       className="section-space overflow-hidden bg-brand-yellow text-brand-dark"
     >
       <div className="site-container">
+        {/* Topo / Eyebrow */}
         <FadeUpAnimation>
           <div className="flex flex-col justify-between gap-6 border-b border-brand-dark/20 pb-7 sm:flex-row sm:items-end">
             <p className="eyebrow text-black">{aboutSection.eyebrow}</p>
-            <p className="max-w-xs text-sm leading-relaxed text-brand-dark/60">
-              {aboutSection.intro}
-            </p>
           </div>
         </FadeUpAnimation>
 
-        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-end">
-          <FadeUpAnimation className="lg:col-span-7">
-            <h2
-              className="font-black uppercase leading-[0.84] tracking-[-0.075em] text-brand-dark"
-              style={{ fontSize: "clamp(3.7rem, 8.2vw, 8.5rem)" }}
-            >
-              {firstHeadingLine}
-              <br />
-              <span className="text-brand-orange">{secondHeadingLine}</span>
-              <br />{thirdHeadingLine}
-            </h2>
+        {/* Grid Principal: Card (Esquerda) e Texto (Direita) */}
+        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-center">
+          {/* CARD DO LADO ESQUERDO */}
+          <FadeUpAnimation delay={0.12} className="min-w-0 lg:col-span-6">
+            <div className="flex flex-col sm:flex-row overflow-hidden rounded-panel w-full">
+              {/* Foto - Adicionado 'group' para disparar o hover corretamente */}
+              <div className="group relative min-h-[22rem] w-full flex-1 sm:min-h-[26rem] overflow-hidden">
+                <Image
+                  src={aboutSection.image.src}
+                  alt={aboutSection.image.alt}
+                  fill
+                  sizes="(min-width: 1024px) 35vw, 100vw"
+                  className="object-cover grayscale transition-all duration-300 group-hover:grayscale-0"
+                />
+                {/* pointer-events-none impede que essa camada bloqueie o hover */}
+                <div className="pointer-events-none absolute inset-0 bg-brand-orange/20 mix-blend-multiply" />
+                <p className="absolute bottom-4 left-4 text-xs ui-label text-brand-light/80">
+                  {aboutSection.imageCaption[0]}
+                  <br />
+                  {aboutSection.imageCaption[1]}
+                </p>
+              </div>
+
+              {/* Coluna de Ícones - Adicionado 'flex-wrap' para não quebrar a largura no mobile */}
+              <div className="flex flex-wrap sm:flex-col items-center justify-center gap-3 sm:gap-1 p-4 sm:px-4 sm:py-6 w-full sm:w-auto">
+                {aboutSection.techIcons.map((tech) => {
+                  const Icon = tech.icon;
+                  return (
+                    <div
+                      key={tech.name}
+                      title={tech.name}
+                      className="flex items-center justify-center rounded-lg p-2"
+                    >
+                      <Icon
+                        aria-hidden="true"
+                        className="size-10 text-brand-dark transition-transform duration-200"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </FadeUpAnimation>
 
-          <FadeUpAnimation delay={0.12} className="lg:col-span-5 lg:pb-2">
-            <p className="max-w-md text-base leading-relaxed text-brand-dark/75 sm:text-lg">
+          {/* TEXTO "SOBRE" DO LADO DIREITO */}
+          <FadeUpAnimation delay={0.18} className="min-w-0 lg:col-span-6 lg:pl-6">
+            <p className="font-semibold text-base leading-relaxed text-brand-dark/75 sm:text-lg">
               {aboutSection.description}
             </p>
+
             <a
               href={aboutSection.button.link}
               target="_blank"
@@ -48,56 +77,6 @@ export default function About() {
             </a>
           </FadeUpAnimation>
         </div>
-
-        <FadeUpAnimation delay={0.18} className="mt-14">
-          <div className="grid overflow-hidden rounded-panel bg-brand-dark lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="relative min-h-80 lg:min-h-[31rem]">
-              <Image
-                src={aboutSection.image.src}
-                alt={aboutSection.image.alt}
-                fill
-                sizes="(min-width: 1024px) 52vw, 100vw"
-                className="object-cover grayscale"
-              />
-              <div className="absolute inset-0 bg-brand-orange/20 mix-blend-multiply" />
-              <p className="absolute bottom-6 left-6 ui-label text-brand-light/80">
-                {aboutSection.imageCaption[0]}
-                <br />
-                {aboutSection.imageCaption[1]}
-              </p>
-            </div>
-
-            <div className="flex flex-col justify-between p-6 text-brand-light sm:p-10">
-              <div>
-                <p className="ui-label text-brand-teal">
-                  {aboutSection.techTitle}
-                </p>
-                <div className="mt-8 border-t border-brand-light/20">
-                  {aboutSection.techIcons.map((tech) => {
-                    const Icon = tech.icon;
-                    return (
-                      <div
-                        key={tech.name}
-                        className="flex items-center justify-between border-b border-brand-light/20 py-4 transition hover:pl-2 hover:text-brand-teal"
-                      >
-                        <span className="text-lg font-semibold tracking-[-0.03em]">
-                          {tech.name}
-                        </span>
-                        <Icon
-                          aria-hidden="true"
-                          className="size-5 text-brand-teal"
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-              <p className="mt-10 max-w-sm text-sm leading-relaxed text-brand-gray">
-                {aboutSection.closingDescription}
-              </p>
-            </div>
-          </div>
-        </FadeUpAnimation>
       </div>
     </section>
   );

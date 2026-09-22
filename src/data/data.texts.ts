@@ -47,12 +47,10 @@ export const aboutSection = {
   heading: ["Não é só", "um site.", "É presença."],
   imageCaption: ["Design com intenção", "Tecnologia com clareza"],
   techTitle: "Ferramentas que movem o projeto",
-  closingDescription:
-    "Uma combinação flexível de repertório visual, código e ferramentas para entregar experiências sólidas.",
   description:
     "Eu sou o João. Crio e desenvolvo aplicações e materiais para a internet, com especialização em Desenvolvimento Front-End, criando interfaces para Web e Mobile com foco em performance, responsividade e experiência do usuário. Colaborei com startups, empresas e instituições, além de prestar serviços para clientes individuais, atuando em todo o ciclo de criação e publicação de projetos. Trabalho com tecnologias modernas de desenvolvimento, programando plataformas web, landing pages, portfólios e sites comerciais. Gosto de unir criatividade e presença online para alcançar prospecções, campanhas ou solucionar problemas de forma eficaz e otimizada.",
   image: {
-    src: "/images/about-photo.jpg",
+    src: "/images/about.gif",
     alt: "Foto de perfil",
   },
   techIcons: [

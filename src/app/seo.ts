@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const seoConfig: Metadata = {
-  title: "Code.JOTA | Desenvolvedor Web Freelancer",
+  title: "Code.JOTA | Web Freelancer",
   description:
     "Portfólio de Code.JOTA, desenvolvedor web freelancer especializado em websites comerciais, landing pages e portfólios profissionais com Next.js e TailwindCSS.",
   keywords: [
